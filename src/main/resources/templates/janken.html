@@ -12,6 +12,14 @@
   <div th:if="${name}">
     Hi [[${name}]]
   </div>
+  <div>
+    <a href="/janken11/vs?hand=guu">グー</a> <a href="/janken11/vs?hand=choki">チョキ</a> <a
+      href="/janken11/vs?hand=paa">パー</a>
+  </div>
+  <div th:if="${result}">
+    [[${result}]]
+  </div>
+
 </body>
 
 </html>

@@ -32,4 +32,20 @@ public class JankenController {
     model.addAttribute("name", name);
     return "janken.html";
   }
+
+  /**
+   * クエリパラメータの引数2つを受け付ける URLでの?のあとのパラメータ名とjavaメソッドの引数名は同じであることが望ましい(別にする方法は一応ある)
+   * 引数をStringとして受け取ってparseIntする以外にもInteger(intのラッパークラス)クラスの変数として受け取ってそのまま加算する方法もある
+   *
+   * @param hand
+   * @param model
+   * @return
+   */
+  @GetMapping("/vs")
+  public String janken14(@RequestParam String hand, ModelMap model) {
+    Janken janken = new Janken(hand);
+    model.addAttribute("result", janken.getResult());
+    return "janken.html";
+  }
+
 }
