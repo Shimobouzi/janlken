@@ -7,18 +7,26 @@
 </head>
 
 <body>
-  <h1>Janken</h1>
+  <div><a href="/logout">ログアウト</a></div>
+  <h1>Janken [[${login_user}]]</h1>
+  <div th:if="${entry}">
+    <ul>
+      エントリー
+      <!--eachは所謂for each．この場合roomオブジェクトのusersフィールドにあるすべてのデータを一通り表示する
+        thが指定されているので[]が不要になる-->
+      <li th:each="user : ${entry.users}">[[${user}]]</li>
+    </ul>
+  </div>
   <br>
-  <div th:if="${name}">
+  <!--<div th:if="${name}">
     Hi [[${name}]]
   </div>
   <div>
-    <a href="/janken11/vs?hand=guu">グー</a> <a href="/janken11/vs?hand=choki">チョキ</a> <a
-      href="/janken11/vs?hand=paa">パー</a>
+    <a href="/janken/vs?hand=guu">グー</a> <a href="/janken/vs?hand=choki">チョキ</a> <a href="/janken/vs?hand=paa">パー</a>
   </div>
   <div th:if="${result}">
     [[${result}]]
-  </div>
+  </div>-->
 
 </body>
 
