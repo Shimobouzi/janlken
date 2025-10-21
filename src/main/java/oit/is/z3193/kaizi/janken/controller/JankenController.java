@@ -13,7 +13,7 @@ import oit.is.z3193.kaizi.janken.model.Janken;
  * @RequestMapping("/sample26")をクラスの前につけると，このクラスのすべてのメソッドは/sample26で呼び出されることを表す
  */
 @Controller
-@RequestMapping("/janken11")
+@RequestMapping("/janken")
 public class JankenController {
 
   @GetMapping

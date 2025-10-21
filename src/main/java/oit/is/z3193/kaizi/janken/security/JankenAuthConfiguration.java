@@ -1,4 +1,4 @@
-package oit.is.inudaisuki.springboot_samples.security;
+package oit.is.z3193.kaizi.janken.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,7 +11,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-public class Sample3AuthConfiguration {
+public class JankenAuthConfiguration {
   /**
    * 認可処理に関する設定（認証されたユーザがどこにアクセスできるか）
    *
@@ -27,8 +27,7 @@ public class Sample3AuthConfiguration {
             .logoutUrl("/logout")
             .logoutSuccessUrl("/")) // ログアウト後に / にリダイレクト
         .authorizeHttpRequests(authz -> authz
-            .requestMatchers("/sample3/**").authenticated() // /sample3/以下は認証済みであること
-            .requestMatchers("/sample4/**").authenticated() // /sample4/以下は認証済みであること
+            .requestMatchers("/janken/**").authenticated() // /sample3/以下は認証済みであること
             .anyRequest().permitAll()) // 上記以外は全員アクセス可能
         .csrf(csrf -> csrf
             .ignoringRequestMatchers("/h2-console/*", "/sample2*/**")) // sample2用にCSRF対策を無効化
@@ -52,16 +51,11 @@ public class Sample3AuthConfiguration {
     // user1/p@ss,user2/p@ss,admin/p@ss
 
     UserDetails user1 = User.withUsername("user1")
-        .password("{bcrypt}$2y$10$ngxCDmuVK1TaGchiYQfJ1OAKkd64IH6skGsNw1sLabrTICOHPxC0e").roles("USER").build();
+        .password("{bcrypt}$2y$05$mSka0O4f.8ewYkUgJnqd0uEY91IoC32ta8AFoeqNFV74ejEZWcv/.").roles("USER").build();
     UserDetails user2 = User.withUsername("user2")
-        .password("{bcrypt}$2y$10$ngxCDmuVK1TaGchiYQfJ1OAKkd64IH6skGsNw1sLabrTICOHPxC0e").roles("USER").build();
-    UserDetails admin = User.withUsername("admin")
-        .password("{bcrypt}$2y$10$ngxCDmuVK1TaGchiYQfJ1OAKkd64IH6skGsNw1sLabrTICOHPxC0e").roles("ADMIN").build();
-    UserDetails hayato = User.withUsername("hayato")
-        .password("{bcrypt}$2y$10$ngxCDmuVK1TaGchiYQfJ1OAKkd64IH6skGsNw1sLabrTICOHPxC0e").roles("USER").build();
-
+        .password("{bcrypt}$2y$05$B1a5otaI7ROTSkReZ9Tfs.eXQztloPB8BwydXE14jyw8TsG9v7p/6").roles("USER").build();
     // 生成したユーザをImMemoryUserDetailsManagerに渡す（いくつでも良い）
-    return new InMemoryUserDetailsManager(user1, user2, admin, hayato);
+    return new InMemoryUserDetailsManager(user1, user2);
   }
 
 }
