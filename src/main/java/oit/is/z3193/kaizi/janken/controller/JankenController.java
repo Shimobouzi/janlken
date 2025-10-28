@@ -76,11 +76,4 @@ public class JankenController {
    * }
    */
 
-  @GetMapping
-  public String sample45(@RequestParam ModelMap model) {
-    ArrayList<User> user = UserMapper.selectAllByName(name);
-    model.addAttribute("user", user);
-    return "janken.html";
-  }
-
 }
