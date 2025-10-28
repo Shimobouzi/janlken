@@ -1,6 +1,7 @@
 package oit.is.z3193.kaizi.janken.controller;
 
 import java.security.Principal;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import oit.is.z3193.kaizi.janken.model.Janken;
 import oit.is.z3193.kaizi.janken.model.Entry;
+import oit.is.z3193.kaizi.janken.model.User;
+import oit.is.z3193.kaizi.janken.model.UserMapper;
 
 /**
  * @RequestMapping("/sample26")をクラスの前につけると，このクラスのすべてのメソッドは/sample26で呼び出されることを表す
@@ -61,14 +64,16 @@ public class JankenController {
    * @param prin  ログインユーザ情報が保持されるオブジェクト
    * @return
    */
-  @GetMapping
-  public String janken15(Principal prin, ModelMap model) {
-    String loginUser = prin.getName();
-    this.entry.addUser(loginUser);
-    model.addAttribute("login_user", loginUser);
-    model.addAttribute("entry", this.entry);
-
-    return "janken.html";
-  }
+  /*
+   * @GetMapping
+   * public String janken15(Principal prin, ModelMap model) {
+   * String loginUser = prin.getName();
+   * this.entry.addUser(loginUser);
+   * model.addAttribute("login_user", loginUser);
+   * model.addAttribute("entry", this.entry);
+   *
+   * return "janken.html";
+   * }
+   */
 
 }
